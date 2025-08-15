@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenvolvimento Web Profissional</title>
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <h1>DevWeb Pro</h1>
+            </a>
+
+            <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">
+                <span class="sr-only">Abrir menu</span>
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="tecnologias.html">Tecnologias</a></li>
+                <li><a href="boas-praticas.html">Boas Práticas</a></li>
+                <li><a href="fluxo.html">Fluxograma</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li>
+                    <button class="theme-toggle" aria-label="Alternar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Aprenda Desenvolvimento Web</h1>
+            <p>Domine as tecnologias fundamentais da web moderna</p>
+            <a href="#cards" class="cta-button">Começar</a>
+        </section>
+
+        <section id="cards" class="cards-section">
+            <article class="card">
+                <h3>HTML5</h3>
+                <p>A linguagem de marcação que estrutura todo o conteúdo na web.</p>
+                <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Título&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Olá Mundo!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</div>
+                <p>Use para estruturar documentos web e criar interfaces semânticas.</p>
+            </article>
+
+            <article class="card">
+                <h3>CSS3</h3>
+                <p>A linguagem de estilo que define a aparência e o layout dos elementos.</p>
+                <div class="code-block">
+.button {
+  background: #2563EB;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  transition: transform 0.2s;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}</div>
+                <p>Use para estilizar elementos HTML e criar layouts responsivos.</p>
+            </article>
+
+            <article class="card">
+                <h3>JavaScript</h3>
+                <p>A linguagem de programação que adiciona interatividade às páginas.</p>
+                <div class="code-block">
+const button = document.querySelector('.button');
+button.addEventListener('click', () => {
+  console.log('Botão clicado!');
+  button.classList.add('active');
+});</div>
+                <p>Use para criar interações dinâmicas e manipular o DOM.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="tecnologias.html">Tecnologias</a></li>
+                    <li><a href="boas-praticas.html">Boas Práticas</a></li>
+                    <li><a href="fluxo.html">Fluxograma</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                </ul>
+            </nav>
+            <p>&copy; 2025 DevWeb Pro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
