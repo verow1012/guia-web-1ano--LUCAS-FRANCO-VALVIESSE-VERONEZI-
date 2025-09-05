@@ -15,6 +15,254 @@
     
     <!-- Estilos -->
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .tech-filters {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background: var(--background);
+            color: var(--text);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text);
+            opacity: 0.5;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-button {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary);
+            border-radius: 0.5rem;
+            background: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .filter-button.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .tech-card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        [data-theme="dark"] .tech-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .tech-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tech-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: var(--secondary);
+            color: white;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .tech-content {
+            padding: 1.5rem;
+        }
+
+        .tech-description {
+            margin-bottom: 1rem;
+        }
+
+        .tech-lists {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .tech-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tech-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tech-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .pros li::before {
+            background: var(--secondary);
+        }
+
+        .cons li::before {
+            background: #EF4444;
+        }
+
+        .tech-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tech-link {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .tech-link:hover {
+            text-decoration: underline;
+        }
+
+        .favorite-button {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .favorite-button:hover {
+            color: #EF4444;
+        }
+
+        .favorite-button.active {
+            color: #EF4444;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        [data-theme="dark"] .modal-content {
+            background: var(--background);
+            border: 1px solid var(--border);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        /* Responsividade do filtro */
+        @media (max-width: 768px) {
+            .filter-controls {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .filter-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -48,11 +296,40 @@
             <p>Explore as principais tecnologias do desenvolvimento web moderno</p>
         </section>
 
-        <section class="content">
-            <h2>Em construção...</h2>
-            <p>Esta página está sendo desenvolvida. Em breve, mais conteúdo sobre tecnologias web!</p>
+        <section class="tech-filters">
+            <div class="filter-controls">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Buscar tecnologias..." aria-label="Buscar tecnologias">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <div class="filter-buttons" role="group" aria-label="Filtros de categoria">
+                    <button class="filter-button active" data-category="all">Todas</button>
+                    <button class="filter-button" data-category="frontend">Front-end</button>
+                    <button class="filter-button" data-category="backend">Back-end</button>
+                    <button class="filter-button" data-category="database">Banco de Dados</button>
+                    <button class="filter-button" data-category="devops">DevOps</button>
+                    <button class="filter-button" data-category="testing">Testes</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-grid" id="techGrid">
+            <!-- Cards serão inseridos via JavaScript -->
         </section>
     </main>
+
+    <!-- Modal de detalhes -->
+    <div class="modal" id="techModal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="modal-close" aria-label="Fechar modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Conteúdo será inserido via JavaScript -->
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -69,5 +346,6 @@
     </footer>
 
     <script src="js/app.js"></script>
+    <script src="js/technologies.js"></script>
 </body>
 </html>

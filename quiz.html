@@ -15,6 +15,116 @@
     
     <!-- Estilos -->
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 2rem auto 4rem;
+            padding: 2rem;
+        }
+
+        .question {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] .question {
+            background: var(--background);
+            border: 1px solid var(--border);
+        }
+
+        .options {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .option {
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option:hover {
+            border-color: var(--primary);
+        }
+
+        .option.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .option.correct {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .option.wrong {
+            background: #EF4444;
+            color: white;
+            border-color: #EF4444;
+        }
+
+        .quiz-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .quiz-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .quiz-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .results {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        [data-theme="dark"] .results {
+            background: var(--background);
+            border: 1px solid var(--border);
+        }
+
+        .score {
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .explanation {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--background);
+            border-radius: 0.5rem;
+            display: none;
+        }
+
+        [data-theme="dark"] .explanation {
+            background: var(--text);
+            color: var(--background);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -48,9 +158,22 @@
             <p>Teste seus conhecimentos em desenvolvimento web</p>
         </section>
 
-        <section class="content">
-            <h2>Em construção...</h2>
-            <p>Esta página está sendo desenvolvida. Em breve, um quiz interativo sobre desenvolvimento web!</p>
+        <section class="quiz-container">
+            <div id="quiz">
+                <!-- Questões serão inseridas aqui via JavaScript -->
+            </div>
+
+            <div class="quiz-controls">
+                <button id="prevButton" class="quiz-button" disabled>Anterior</button>
+                <button id="nextButton" class="quiz-button">Próxima</button>
+            </div>
+
+            <div id="results" class="results" style="display: none;">
+                <h2>Resultados</h2>
+                <div class="score">0/8</div>
+                <p>Sua melhor pontuação: <span id="bestScore">0/8</span></p>
+                <button id="restartButton" class="quiz-button">Tentar Novamente</button>
+            </div>
         </section>
     </main>
 
@@ -69,5 +192,6 @@
     </footer>
 
     <script src="js/app.js"></script>
+    <script src="js/quiz.js"></script>
 </body>
 </html>
